@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { checkWebmSupport } from '../../utils/utils';
-import data from './data';
+import statements from './statements';
 import './slideshow.scss';
 const autoShowNextSlide = true;
 const nextSlideTime = 500;
@@ -9,7 +9,7 @@ const supportsWebM = checkWebmSupport();
 
 const Slideshow = () => {
     const [current, setCurrent] = useState(0);
-    const [els, setEls] = useState(data);
+    const [els, setEls] = useState(statements);
     const [total, setTotal] = useState(0);
     const setValue = (val) => {
         const currentState = els;
@@ -22,7 +22,7 @@ const Slideshow = () => {
         <section className="slideshow">
             <Slide
                 el={els[current]}
-                max={data.length - 1}
+                max={statements.length - 1}
                 current={current}
                 setCurrent={setCurrent}
                 setValue={setValue}
