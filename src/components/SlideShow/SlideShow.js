@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { checkWebmSupport } from '../../utils/utils';
 import data from './data';
 import './slideshow.scss';
 const autoShowNextSlide = true;
 const nextSlideTime = 500;
-const debug = true;
+const debug = false;
+const supportsWebM = checkWebmSupport();
 
 const Slideshow = () => {
     const [current, setCurrent] = useState(0);
