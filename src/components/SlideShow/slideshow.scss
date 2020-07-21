@@ -9,6 +9,10 @@
         position: fixed;
         top: 0;
         left: 0;
+        max-width: 20rem;
+        overflow: scroll;
+        display: block;
+        height: 100%;
     }
     .slide {
         width: 100vw;

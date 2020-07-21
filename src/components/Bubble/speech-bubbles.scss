@@ -1,0 +1,105 @@
+$offset: 3rem;
+.speech-container {
+    display: flex;
+    max-width: 1200px;
+}
+$blue: #6699cc;
+$green: #37e7a7;
+$purple: #8223d2;
+
+.speech-bubble {
+    border: 3px solid $blue;
+    position: relative;
+    width: 260px;
+    min-height: 45px;
+    border-radius: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    color: $blue;
+    margin-right: 1rem;
+    &.large {
+        width: 75%;
+        margin-right: 0;
+    }
+    &.solid {
+        background: $blue;
+        color: #000;
+    }
+    .content {
+        font-size: small;
+        text-transform: uppercase;
+    }
+    &.left {
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: $offset;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: $blue;
+            border-bottom: 0;
+            border-left: 0;
+            margin-left: -10px;
+            margin-bottom: -20px;
+        }
+    }
+    &.right {
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: $offset;
+            border: 20px solid transparent;
+            border-top-color: $blue;
+            border-bottom: 0;
+            border-right: 0;
+            margin-left: -10px;
+            margin-bottom: -20px;
+        }
+    }
+}
+
+.speech-bubble.green {
+    @extend .speech-bubble;
+    border: 3px solid $green;
+    color: $green;
+    &.solid {
+        background: $green;
+        color: #000;
+    }
+    &.left {
+        &::after {
+            border-top-color: $green;
+        }
+    }
+    &.right {
+        &::after {
+            border-top-color: $green;
+        }
+    }
+}
+
+.speech-bubble.purple {
+    @extend .speech-bubble;
+    border: 3px solid $purple;
+    color: $purple;
+    &.solid {
+        background: $purple;
+        color: white;
+    }
+    &.left {
+        &::after {
+            border-top-color: $purple;
+        }
+    }
+    &.right {
+        &::after {
+            border-top-color: $purple;
+        }
+    }
+}

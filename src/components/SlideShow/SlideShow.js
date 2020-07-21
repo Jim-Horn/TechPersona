@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { checkWebmSupport } from '../../utils/utils';
 import statements from './statements';
+import data from './response-data';
 import './slideshow.scss';
+import './response.scss';
 const autoShowNextSlide = true;
 const nextSlideTime = 500;
 const debug = false;
@@ -12,6 +14,7 @@ const Slideshow = () => {
     const [els, setEls] = useState(statements);
     const [total, setTotal] = useState(0);
     const setValue = (val) => {
+        console.log('val: ', val);
         const currentState = els;
         currentState[current].value = val;
         setEls(currentState);
@@ -35,26 +38,35 @@ const Slideshow = () => {
 export default Slideshow;
 
 const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
-    const { value, message, answerValues } = el;
+    console.log('el: ', el);
+    const { value, blurb, answerValues } = el;
     return (
         <div className={`slide ${value ? 'complete' : ''}`}>
             Total: {total} - Current: {value || 0}
             <br />
-            Slide {message}
-            <div className="buttons">
-                {answerValues.map((num) => (
-                    <button
-                        key={num}
-                        className={value === num ? 'selected' : ''}
-                        onClick={() => {
-                            setValue(num);
-                            autoShowNextSlide &&
-                                setTimeout(() => current < max && setCurrent(current + 1), nextSlideTime);
-                        }}>
-                        {num}
-                    </button>
-                ))}
-            </div>
+            {blurb}
+            <section className={`response ${el.value !== 0 ? 'complete' : ''}`}>
+                <div className="selectors">
+                    {data.map(({ buttonText, className, text, val }, index) => {
+                        return (
+                            <label
+                                className={`selector ${el.value === answerValues[index] ? 'selected' : ''}`}
+                                key={index}>
+                                <button
+                                    data-value={answerValues[index]}
+                                    onClick={() => {
+                                        setValue(answerValues[index]);
+                                        autoShowNextSlide &&
+                                            setTimeout(() => current < max && setCurrent(current + 1), nextSlideTime);
+                                    }}
+                                    aria-label={text}
+                                />
+                                <span className={`text ${className}`}>{text}</span>
+                            </label>
+                        );
+                    })}
+                </div>
+            </section>
             <nav>
                 <button
                     disabled={current === 0}
