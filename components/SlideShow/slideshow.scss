@@ -1,0 +1,41 @@
+.slideshow {
+    outline: 5px dashed green;
+    width: 100vw;
+    height: 100vh;
+    font-size: xx-large;
+    .state {
+        font-size: x-small;
+        color: green;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .slide {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-flow: column wrap;
+        border: 5px dashed red;
+        &.complete {
+            border-color: green;
+        }
+        padding: 10rem;
+        .buttons,
+        nav {
+            display: flex;
+            min-width: 50vw;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            > button {
+                font-size: xx-large;
+                min-width: 5rem;
+                &.selected {
+                    background-color: red;
+                    color: white;
+                }
+            }
+        }
+    }
+}

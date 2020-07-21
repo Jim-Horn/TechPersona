@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Start from './components/Start';
+import SlideShow from './components/SlideShow';
 
 const DefaultView = () => {
-    return <Start />;
+    return <SlideShow />;
 };
 render(<DefaultView />, document.getElementById('base-target'));
