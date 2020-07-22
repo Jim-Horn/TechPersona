@@ -4,6 +4,7 @@ import statements from './statements';
 import data from './response-data';
 import './slideshow.scss';
 import './response.scss';
+import './question.scss';
 const autoShowNextSlide = true;
 const nextSlideTime = 500;
 const debug = false;
@@ -23,6 +24,10 @@ const Slideshow = () => {
     };
     return (
         <section className="slideshow">
+            <div className="percent-complete">
+                <span className="current-step-number">{(current + 1).toString().padStart(2, '0')}</span>
+                <span>/{els.length}</span>
+            </div>
             <Slide
                 el={els[current]}
                 max={statements.length - 1}
@@ -38,13 +43,18 @@ const Slideshow = () => {
 export default Slideshow;
 
 const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
-    console.log('el: ', el);
-    const { value, blurb, answerValues } = el;
+    const { value, blurb, statement, answerValues, img, webm } = el;
+    console.log('supportsWebM: ', supportsWebM);
     return (
-        <div className={`slide ${value ? 'complete' : ''}`}>
-            Total: {total} - Current: {value || 0}
-            <br />
-            {blurb}
+        <div className={`question ${!!value ? 'complete' : 'todo'}`}>
+            {supportsWebM ? (
+                <video width="320" height="240" autoPlay={true} loop={true}>
+                    <source src={webm} type="video/webm" />
+                </video>
+            ) : (
+                <img src={img} alt="" />
+            )}
+            <h2>{statement}</h2>
             <section className={`response ${el.value !== 0 ? 'complete' : ''}`}>
                 <div className="selectors">
                     {data.map(({ buttonText, className, text, val }, index) => {

@@ -3,12 +3,13 @@
     width: 100vw;
     height: 100vh;
     font-size: xx-large;
+    background-color: #efeef5;
     .state {
         font-size: x-small;
         color: green;
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
         max-width: 20rem;
         overflow: scroll;
         display: block;
