@@ -44,15 +44,14 @@ export default Slideshow;
 
 const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
     const { value, blurb, statement, answerValues, img, webm } = el;
-    console.log('supportsWebM: ', supportsWebM);
     return (
         <div className={`question ${!!value ? 'complete' : 'todo'}`}>
             {supportsWebM ? (
-                <video width="320" height="240" autoPlay={true} loop={true}>
+                <video key={webm} width="320" height="240" autoPlay={true} loop={true}>
                     <source src={webm} type="video/webm" />
                 </video>
             ) : (
-                <img src={img} alt="" />
+                <img key={img} src={img} alt="" />
             )}
             <h2>{statement}</h2>
             <section className={`response ${el.value !== 0 ? 'complete' : ''}`}>
