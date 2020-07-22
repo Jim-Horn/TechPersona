@@ -2,8 +2,18 @@
     outline: 5px dashed green;
     width: 100vw;
     height: 100vh;
-    font-size: xx-large;
     background-color: #efeef5;
+    .percent-complete {
+        position: fixed;
+        padding: 0.5rem 1.5rem;
+        right: 0;
+        color: #999;
+        font-size: x-large;
+        .current-step-number {
+            color: black;
+            font-size: xx-large;
+        }
+    }
     .state {
         font-size: x-small;
         color: green;

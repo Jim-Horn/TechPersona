@@ -5,6 +5,8 @@ import data from './response-data';
 import './slideshow.scss';
 import './response.scss';
 import './question.scss';
+import Bubble from '../Bubble';
+import { CONSTANTS } from '../../constants';
 const autoShowNextSlide = true;
 const nextSlideTime = 500;
 const debug = false;
@@ -15,7 +17,6 @@ const Slideshow = () => {
     const [els, setEls] = useState(statements);
     const [total, setTotal] = useState(0);
     const setValue = (val) => {
-        console.log('val: ', val);
         const currentState = els;
         currentState[current].value = val;
         setEls(currentState);
@@ -43,18 +44,21 @@ const Slideshow = () => {
 export default Slideshow;
 
 const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
-    const { value, blurb, statement, answerValues, img, webm } = el;
+    const { value, blurb, color, type, statement, answerValues, img, webm } = el;
+    const wh = 400;
     return (
         <div className={`question ${!!value ? 'complete' : 'todo'}`}>
-            {supportsWebM ? (
-                <video key={webm} width="320" height="240" autoPlay={true} loop={true}>
-                    <source src={webm} type="video/webm" />
-                </video>
-            ) : (
-                <img key={img} src={img} alt="" />
-            )}
+            <div className="image-container">
+                {supportsWebM ? (
+                    <video key={webm} width={wh} height={wh} autoPlay={true} loop={true}>
+                        <source src={webm} type="video/webm" />
+                    </video>
+                ) : (
+                    <img key={img} src={img} alt="" />
+                )}
+            </div>
             <h2>{statement}</h2>
-            <section className={`response ${el.value !== 0 ? 'complete' : ''}`}>
+            <section className={`response ${value !== 0 ? 'complete' : ''}`}>
                 <div className="selectors">
                     {data.map(({ buttonText, className, text, val }, index) => {
                         return (
@@ -76,6 +80,14 @@ const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
                     })}
                 </div>
             </section>
+            <div className="speech-container">
+                <Bubble size="" color={color} fill="" align="right">
+                    {type === CONSTANTS.TYPES.FACT ? 'FACT ...' : 'DID YOU KNOW ...'}
+                </Bubble>
+                <Bubble size="large" color={color} fill="solid" align="left">
+                    {blurb}
+                </Bubble>
+            </div>
             <nav>
                 <button
                     disabled={current === 0}
