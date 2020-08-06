@@ -62,13 +62,11 @@ const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
                 <div className="selectors">
                     {data.map(({ buttonText, className, text, val }, index) => {
                         return (
-                            <label
-                                className={`selector ${el.value === answerValues[index] ? 'selected' : ''}`}
-                                key={index}>
+                            <label className={`selector ${el.value === index + 1 ? 'selected' : ''}`} key={index}>
                                 <button
-                                    data-value={answerValues[index]}
+                                    data-value={index + 1}
                                     onClick={() => {
-                                        setValue(answerValues[index]);
+                                        setValue(index + 1);
                                         autoShowNextSlide &&
                                             setTimeout(() => current < max && setCurrent(current + 1), nextSlideTime);
                                     }}
@@ -89,20 +87,24 @@ const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
                 </Bubble>
             </div>
             <nav>
-                <button
-                    disabled={current === 0}
-                    onClick={() => {
-                        current !== 0 && setCurrent(current > 0 ? current - 1 : 0);
-                    }}>
-                    Previous
-                </button>
-                <button
-                    disabled={!value || current === max}
-                    onClick={() => {
-                        current !== max && setCurrent(current < max ? current + 1 : max);
-                    }}>
-                    Next
-                </button>
+                {current !== 0 && (
+                    <button
+                        disabled={current === 0}
+                        onClick={() => {
+                            current !== 0 && setCurrent(current > 0 ? current - 1 : 0);
+                        }}>
+                        Previous
+                    </button>
+                )}
+                {current !== max && (
+                    <button
+                        disabled={!value || current === max}
+                        onClick={() => {
+                            current !== max && setCurrent(current < max ? current + 1 : max);
+                        }}>
+                        Next
+                    </button>
+                )}
             </nav>
         </div>
     );
