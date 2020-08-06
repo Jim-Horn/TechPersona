@@ -87,24 +87,20 @@ const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
                 </Bubble>
             </div>
             <nav>
-                {current !== 0 && (
-                    <button
-                        disabled={current === 0}
-                        onClick={() => {
-                            current !== 0 && setCurrent(current > 0 ? current - 1 : 0);
-                        }}>
-                        Previous
-                    </button>
-                )}
-                {current !== max && (
-                    <button
-                        disabled={!value || current === max}
-                        onClick={() => {
-                            current !== max && setCurrent(current < max ? current + 1 : max);
-                        }}>
-                        Next
-                    </button>
-                )}
+                <button
+                    disabled={current === 0}
+                    onClick={() => {
+                        current !== 0 && setCurrent(current > 0 ? current - 1 : 0);
+                    }}>
+                    Previous
+                </button>
+                <button
+                    disabled={!value || current === max}
+                    onClick={() => {
+                        current !== max && setCurrent(current < max ? current + 1 : max);
+                    }}>
+                    Next
+                </button>
             </nav>
         </div>
     );
