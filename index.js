@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import SlideShow from './src/components/SlideShow';
+import Wrapper from './src/components/Wrapper';
 
 const DefaultView = () => {
-    return <SlideShow />;
+    return <Wrapper />;
 };
 render(<DefaultView />, document.getElementById('base-target'));
