@@ -42,6 +42,7 @@
     nav {
         display: flex;
         min-width: 50vw;
+        max-width: 80rem;
         width: 100%;
         flex-flow: row nowrap;
         justify-content: space-between;
