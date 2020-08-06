@@ -120,7 +120,7 @@ export default [
     {
         img: TechPersona10,
         webm: TechPersona10webm,
-        statement: `They say technology can save you so much time,  but it often ends up wasting time`,
+        statement: `They say technology can save you so much time, but it often ends up wasting time`,
         color: CONSTANTS.STYLES.BLUE,
         type: CONSTANTS.TYPES.DID_YOU_KNOW,
         blurb: `The digital pocket watch was invented in 1883.`,
@@ -140,7 +140,7 @@ export default [
     {
         img: TechPersona12,
         webm: TechPersona12webm,
-        statement: `Google Home is a great innovation - Id have it in every room of my home if I could`,
+        statement: `Google Home is a great innovation - I'd have it in every room of my home if I could`,
         color: CONSTANTS.STYLES.GREEN,
         type: CONSTANTS.TYPES.DID_YOU_KNOW,
         blurb: `Google started in 1996 as a research project by students at Stanford University.`,
