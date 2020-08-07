@@ -43,7 +43,17 @@ class Wrapper extends React.Component {
                 {introComplete && !slideshowComplete && (
                     <Slideshow containerWidth={containerWidth} setSlideshowComplete={this.setSlideshowComplete} />
                 )}
-                {introComplete && slideshowComplete && <h1>Complete!</h1>}
+                {introComplete && slideshowComplete && (
+                    <span>
+                        <h1>Complete!</h1>
+                        <button
+                            onClick={() => {
+                                this.setState({ slideshowComplete: false });
+                            }}>
+                            Back
+                        </button>
+                    </span>
+                )}
             </section>
         );
     }
