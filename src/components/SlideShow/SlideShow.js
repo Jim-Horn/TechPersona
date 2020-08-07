@@ -8,11 +8,11 @@ import './question.scss';
 import Bubble from '../Bubble';
 import { CONSTANTS } from '../../constants';
 const autoShowNextSlide = true;
-const nextSlideTime = 500;
+const nextSlideTime = 50;
 const debug = false;
 const supportsWebM = checkWebmSupport();
 
-const Slideshow = () => {
+const Slideshow = ({ setSlideshowComplete }) => {
     const [current, setCurrent] = useState(0);
     const [els, setEls] = useState(statements);
     const [total, setTotal] = useState(0);
@@ -23,6 +23,7 @@ const Slideshow = () => {
         const newTotal = els.reduce((acc, el) => acc + (el.value || 0), 0).toFixed(2);
         setTotal(newTotal);
     };
+    current === 12 && els[els.length - 1].value && setSlideshowComplete();
     return (
         <section className="slideshow">
             <div className="percent-complete">
