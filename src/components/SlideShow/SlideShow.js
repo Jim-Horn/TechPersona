@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { checkWebmSupport } from '../../utils/utils';
 import statements from './statements';
 import data from './response-data';
@@ -13,37 +13,44 @@ const nextSlideTime = 50;
 const debug = false;
 const supportsWebM = checkWebmSupport();
 
-const Slideshow = ({ setSlideshowComplete, setQuizTotal }) => {
-    const [current, setCurrent] = useState(0);
-    const [els, setEls] = useState(statements);
-    const [total, setTotal] = useState(0);
-    const setValue = (val) => {
-        const currentState = els;
-        currentState[current].value = val;
-        setEls(currentState);
-        const newTotal = els.reduce((acc, el) => acc + (el.value || 0), 0).toFixed(2);
-        setTotal(newTotal);
-        setQuizTotal(newTotal);
+class Slideshow extends React.Component {
+    state = { current: 0, els: statements, total: 0 };
+    setCurrent = (val) => {
+        this.setState({ current: val });
     };
-    current === 12 && els[els.length - 1].value && setSlideshowComplete();
-    return (
-        <section className="slideshow">
-            <div className="percent-complete">
-                <span className="current-step-number">{(current + 1).toString().padStart(2, '0')}</span>
-                <span>/{els.length}</span>
-            </div>
-            <Slide
-                el={els[current]}
-                max={statements.length - 1}
-                current={current}
-                setCurrent={setCurrent}
-                setValue={setValue}
-                total={total}
-            />
-            {debug && <pre className="state">{JSON.stringify(els, null, 2)}</pre>}
-        </section>
-    );
-};
+    render() {
+        let { setSlideshowComplete, setQuizTotal } = this.props;
+        const { current, els, total } = this.state;
+
+        const setValue = (val) => {
+            const currentState = els;
+            currentState[current].value = val;
+            this.setState({ els: currentState });
+            const newTotal = els.reduce((acc, el) => acc + (el.value || 0), 0).toFixed(2);
+            this.setState({ total: newTotal });
+            setQuizTotal(newTotal);
+        };
+        current === 12 && els[els.length - 1].value && setSlideshowComplete();
+        return (
+            <section className="slideshow">
+                <div className="percent-complete">
+                    <span className="current-step-number">{(current + 1).toString().padStart(2, '0')}</span>
+                    <span>/{els.length}</span>
+                </div>
+                <Slide
+                    el={els[current]}
+                    max={statements.length - 1}
+                    current={current}
+                    setCurrent={this.setCurrent}
+                    setValue={setValue}
+                    total={total}
+                />
+                {(!!debug || !!window.debug) && <pre className="state">{JSON.stringify(els, null, 2)}</pre>}
+            </section>
+        );
+    }
+}
+
 export default Slideshow;
 
 const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
