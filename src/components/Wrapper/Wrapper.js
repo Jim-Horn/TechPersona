@@ -24,12 +24,14 @@ class Wrapper extends React.Component {
     };
 
     render() {
-        const { introComplete, slideshowComplete } = this.state;
+        const { introComplete, slideshowComplete, containerWidth } = this.state;
 
         return (
             <section className="slideshow-wrapper" ref={this.container}>
-                {!introComplete && <Intro setIntroComplete={this.setIntroComplete} />}
-                {introComplete && !slideshowComplete && <Slideshow setSlideshowComplete={this.setSlideshowComplete} />}
+                {!introComplete && <Intro containerWidth={containerWidth} setIntroComplete={this.setIntroComplete} />}
+                {introComplete && !slideshowComplete && (
+                    <Slideshow containerWidth={containerWidth} setSlideshowComplete={this.setSlideshowComplete} />
+                )}
                 {introComplete && slideshowComplete && <h1>Complete!</h1>}
             </section>
         );
