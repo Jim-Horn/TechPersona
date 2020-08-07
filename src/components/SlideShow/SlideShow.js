@@ -14,7 +14,19 @@ const debug = false;
 const supportsWebM = checkWebmSupport();
 
 class Slideshow extends React.Component {
-    state = { current: 0, els: statements, total: 0 };
+    state = {
+        current: 0,
+        els: statements,
+        total: 0,
+
+        sum: 0,
+        stdDev: 0,
+        average: 0,
+        filled: 0,
+        nums: [],
+        result: { enthusiast: 0, skeptic: 0, passenger: 0, nearly: 0, diyer: 0 },
+        persona: '',
+    };
     setCurrent = (val) => {
         this.setState({ current: val });
     };
@@ -22,14 +34,74 @@ class Slideshow extends React.Component {
         let { setSlideshowComplete, setQuizTotal } = this.props;
         const { current, els, total } = this.state;
 
+        // const setValue = (val) => {
+        //     const currentState = els;
+        //     currentState[current].value = val;
+        //     this.setState({ els: currentState });
+        //     const newTotal = els.reduce((acc, el) => acc + (el.value || 0), 0).toFixed(2);
+        //     this.setState({ total: newTotal });
+        //     setQuizTotal(newTotal);
+        // };
+
         const setValue = (val) => {
-            const currentState = els;
-            currentState[current].value = val;
-            this.setState({ els: currentState });
-            const newTotal = els.reduce((acc, el) => acc + (el.value || 0), 0).toFixed(2);
-            this.setState({ total: newTotal });
-            setQuizTotal(newTotal);
+            // console.clear();
+            const newEls = this.state.els;
+
+            newEls[current].value = parseInt(val);
+
+            const numbers = mathFns.getNumbers(newEls);
+
+            const newSum = numbers.reduce((sum, number) => sum + number, 0);
+
+            const filled = numbers.length;
+            const mean = newSum / filled;
+            const standardDeviation = mathFns.stdDev(numbers);
+            console.log('standardDeviation: ', standardDeviation);
+
+            Object.keys(CONSTANTS.personas).forEach(
+                (key) => (newEls[current][key] = standardDeviation * parseInt(val) * CONSTANTS.personas[key])
+            );
+
+            newEls.forEach((el) => {
+                return (el.centeredScore = (el.value - mean) / standardDeviation);
+            });
+
+            let results = { enthusiast: 0, skeptic: 0, passenger: 0, nearly: 0, diyer: 0 };
+            for (let key in CONSTANTS.personas) {
+                newEls.forEach((el) => (results[key] += (el.centeredScore || 0) * (el.weights[key] || 0)));
+            }
+
+            let max = results['enthusiast'];
+            for (let key in results) {
+                if (results[key] > max) {
+                    max = results[key];
+                }
+            }
+
+            const getKeyNameByValue = (obj, val) => Object.keys(obj).find((key) => obj[key] === val);
+
+            window.CONSTANTS = CONSTANTS;
+            window.newEls = newEls;
+
+            setQuizTotal(newSum);
+            this.setState(
+                (prevState, props) => ({
+                    nums: numbers,
+                    filled: numbers.length,
+                    average: newSum / numbers.length,
+                    stdDev: mathFns.stdDev(numbers),
+                    sum: newSum,
+                    els: newEls,
+                    persona: getKeyNameByValue(results, max),
+                    results,
+                }),
+                () => {
+                    window.persona = this.state.persona;
+                    console.log('State written')
+                }
+            );
         };
+
         current === 12 && els[els.length - 1].value && setSlideshowComplete();
         return (
             <section className="slideshow">
@@ -45,7 +117,7 @@ class Slideshow extends React.Component {
                     setValue={setValue}
                     total={total}
                 />
-                {(!!debug || !!window.debug) && <pre className="state">{JSON.stringify(els, null, 2)}</pre>}
+                {(!!debug || !!window.debug) && <pre className="state">{JSON.stringify(els[current], null, 2)}</pre>}
             </section>
         );
     }

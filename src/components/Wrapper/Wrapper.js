@@ -55,7 +55,7 @@ class Wrapper extends React.Component {
                 {introComplete && slideshowComplete && (
                     <span>
                         <h1>Complete!</h1>
-                        <h2>{this.state.quizTotal}</h2>
+                        <h2>{window.persona}</h2>
                         <button
                             onClick={() => {
                                 this.setState({ slideshowComplete: false });
