@@ -6,7 +6,14 @@ class Wrapper extends React.Component {
     state = {
         introComplete: false,
         slideshowComplete: false,
+        containerWidth: null,
     };
+
+    container = React.createRef();
+
+    componentDidMount() {
+        this.setState({ containerWidth: this.container.current.offsetWidth });
+    }
 
     setIntroComplete = () => {
         this.setState({ introComplete: true });
@@ -20,7 +27,7 @@ class Wrapper extends React.Component {
         const { introComplete, slideshowComplete } = this.state;
 
         return (
-            <section className="foo">
+            <section className="slideshow-wrapper" ref={this.container}>
                 {!introComplete && <Intro setIntroComplete={this.setIntroComplete} />}
                 {introComplete && !slideshowComplete && <Slideshow setSlideshowComplete={this.setSlideshowComplete} />}
                 {introComplete && slideshowComplete && <h1>Complete!</h1>}
