@@ -2,21 +2,34 @@ import React, { useState } from 'react';
 import Intro from '../Intro';
 import Slideshow from '../SlideShow';
 
-const Wrapper = () => {
-    const [introComplete, setIntroComplete] = useState(false);
-    const [slideshowComplete, setSlideshowComplete] = useState(false);
-    if (!introComplete) {
-        return <Intro setIntroComplete={setIntroComplete} />;
-    }
+class Wrapper extends React.Component {
+    state = {
+        introComplete: false,
+        slideshowComplete: false,
+    };
 
-    if (introComplete && !slideshowComplete) {
-        return <Slideshow setSlideshowComplete={setSlideshowComplete} />;
-    }
+    setIntroComplete = () => {
+        this.setState({ introComplete: true });
+    };
 
-    if (introComplete && slideshowComplete) {
-        return <h1>Results</h1>;
+    setSlideshowComplete = () => {
+        this.setState({ slideshowComplete: true });
+    };
+    render() {
+        const { introComplete, slideshowComplete } = this.state;
+        if (!introComplete) {
+            return <Intro setIntroComplete={this.setIntroComplete} />;
+        }
+
+        if (introComplete && !slideshowComplete) {
+            return <Slideshow setSlideshowComplete={this.setSlideshowComplete} />;
+        }
+
+        if (introComplete && slideshowComplete) {
+            return <h1>Results</h1>;
+        }
+        return <h1>Done</h1>;
     }
-    return <h1>Done</h1>;
-};
+}
 
 export default Wrapper;
