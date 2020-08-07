@@ -7,6 +7,7 @@ import './response.scss';
 import './question.scss';
 import Bubble from '../Bubble';
 import { CONSTANTS } from '../../constants';
+import { mathFns } from '../../utils';
 const autoShowNextSlide = true;
 const nextSlideTime = 50;
 const debug = false;
