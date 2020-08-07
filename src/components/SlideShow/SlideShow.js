@@ -12,7 +12,7 @@ const nextSlideTime = 50;
 const debug = false;
 const supportsWebM = checkWebmSupport();
 
-const Slideshow = ({ setSlideshowComplete }) => {
+const Slideshow = ({ setSlideshowComplete, setQuizTotal }) => {
     const [current, setCurrent] = useState(0);
     const [els, setEls] = useState(statements);
     const [total, setTotal] = useState(0);
@@ -22,6 +22,7 @@ const Slideshow = ({ setSlideshowComplete }) => {
         setEls(currentState);
         const newTotal = els.reduce((acc, el) => acc + (el.value || 0), 0).toFixed(2);
         setTotal(newTotal);
+        setQuizTotal(newTotal);
     };
     current === 12 && els[els.length - 1].value && setSlideshowComplete();
     return (
@@ -46,16 +47,15 @@ export default Slideshow;
 
 const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
     const { value, blurb, color, type, statement, answerValues, img, webm } = el;
-    const wh = 400;
     return (
         <div className={`question ${!!value ? 'complete' : 'todo'}`}>
             <div className="image-container">
                 {supportsWebM ? (
-                    <video key={webm} width={wh} height={wh} autoPlay={true} loop={true}>
+                    <video className="quiz-vid" key={webm} autoPlay={true} loop={true}>
                         <source src={webm} type="video/webm" />
                     </video>
                 ) : (
-                    <img key={img} src={img} alt="" />
+                    <img className="quiz-img" key={img} src={img} alt="" />
                 )}
             </div>
             <h2>{statement}</h2>

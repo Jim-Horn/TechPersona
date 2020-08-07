@@ -9,6 +9,7 @@ class Wrapper extends React.Component {
         introComplete: false,
         slideshowComplete: false,
         containerWidth: null,
+        quizTotal: 0,
     };
 
     container = React.createRef();
@@ -34,6 +35,10 @@ class Wrapper extends React.Component {
         this.setState({ slideshowComplete: true });
     };
 
+    setQuizTotal = (val) => {
+        this.setState({ quizTotal: val });
+    };
+
     render() {
         const { introComplete, slideshowComplete, containerWidth } = this.state;
 
@@ -41,11 +46,16 @@ class Wrapper extends React.Component {
             <section className="slideshow-wrapper" ref={this.container}>
                 {!introComplete && <Intro containerWidth={containerWidth} setIntroComplete={this.setIntroComplete} />}
                 {introComplete && !slideshowComplete && (
-                    <Slideshow containerWidth={containerWidth} setSlideshowComplete={this.setSlideshowComplete} />
+                    <Slideshow
+                        containerWidth={containerWidth}
+                        setSlideshowComplete={this.setSlideshowComplete}
+                        setQuizTotal={this.setQuizTotal}
+                    />
                 )}
                 {introComplete && slideshowComplete && (
                     <span>
                         <h1>Complete!</h1>
+                        <h2>{this.state.quizTotal}</h2>
                         <button
                             onClick={() => {
                                 this.setState({ slideshowComplete: false });

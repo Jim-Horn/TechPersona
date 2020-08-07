@@ -5,6 +5,11 @@
     justify-content: center;
     align-items: center;
     flex-flow: column nowrap;
+    .intro-vid,
+    .intro-png {
+        min-width: 320px;
+        max-width: 1440px;
+    }
     .intro-content {
         display: flex;
         justify-content: space-evenly;

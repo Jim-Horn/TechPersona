@@ -5,17 +5,15 @@ import png from './images/Tech-Persona-Desktop-Landing-2x.png';
 import './intro.scss';
 const supportsWebM = checkWebmSupport();
 
-const Intro = ({ containerWidth, setIntroComplete }) => {
-    const vidRatio = 0.7111111111;
-    const vidWidth = containerWidth < 1440 ? containerWidth : 1440;
+const Intro = ({ setIntroComplete }) => {
     return (
         <div id="intro">
             {supportsWebM ? (
-                <video width={vidWidth} height={vidWidth * vidRatio} autoPlay={true} loop={false}>
+                <video className="intro-vid" autoPlay={true} loop={false}>
                     <source src={webm} type="video/webm" />
                 </video>
             ) : (
-                <img src={png} width={vidWidth} alt="" />
+                <img className="intro-png" src={png} alt="" />
             )}
             <div className="intro-content">
                 <section className="verbiage">
