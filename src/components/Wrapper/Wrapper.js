@@ -15,20 +15,17 @@ class Wrapper extends React.Component {
     setSlideshowComplete = () => {
         this.setState({ slideshowComplete: true });
     };
+
     render() {
         const { introComplete, slideshowComplete } = this.state;
-        if (!introComplete) {
-            return <Intro setIntroComplete={this.setIntroComplete} />;
-        }
 
-        if (introComplete && !slideshowComplete) {
-            return <Slideshow setSlideshowComplete={this.setSlideshowComplete} />;
-        }
-
-        if (introComplete && slideshowComplete) {
-            return <h1>Results</h1>;
-        }
-        return <h1>Done</h1>;
+        return (
+            <section className="foo">
+                {!introComplete && <Intro setIntroComplete={this.setIntroComplete} />}
+                {introComplete && !slideshowComplete && <Slideshow setSlideshowComplete={this.setSlideshowComplete} />}
+                {introComplete && slideshowComplete && <h1>Complete!</h1>}
+            </section>
+        );
     }
 }
 
