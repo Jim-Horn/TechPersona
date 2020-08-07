@@ -2,6 +2,7 @@ import React from 'react';
 import debounce from 'lodash/debounce';
 import Intro from '../Intro';
 import Slideshow from '../SlideShow';
+import './wrapper.scss';
 
 class Wrapper extends React.Component {
     state = {
