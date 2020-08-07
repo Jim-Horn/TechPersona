@@ -35,7 +35,7 @@ const Intro = ({ containerWidth, setIntroComplete }) => {
                         onClick={() => {
                             setIntroComplete(true);
                         }}>
-                        Click me
+                        Take the quiz
                     </button>
                 </nav>
             </div>
