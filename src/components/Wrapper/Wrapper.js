@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import debounce from 'lodash/debounce';
 import Intro from '../Intro';
 import Slideshow from '../SlideShow';
 
@@ -12,6 +13,15 @@ class Wrapper extends React.Component {
     container = React.createRef();
 
     componentDidMount() {
+        this.updateWidth();
+        window.addEventListener('resize', debounce(this.updateWidth.bind(this), 50));
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWidth);
+    }
+
+    updateWidth() {
         this.setState({ containerWidth: this.container.current.offsetWidth });
     }
 
