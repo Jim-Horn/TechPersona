@@ -8,4 +8,11 @@ export const CONSTANTS = {
         PURPLE: 'purple',
         GREEN: 'green',
     },
+    personas: {
+        enthusiast: -6.558,
+        skeptic: -6.178,
+        passenger: -6.193,
+        nearly: -1.703,
+        diyer: -6.985,
+    },
 };
