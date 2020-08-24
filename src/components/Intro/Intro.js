@@ -6,7 +6,7 @@ import './intro.scss';
 const supportsWebM = checkWebmSupport();
 
 const Intro = ({ setIntroComplete }) => {
-    setIntroComplete();
+    // setIntroComplete();
     return (
         <div id="intro">
             {supportsWebM ? (
