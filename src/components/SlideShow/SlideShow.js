@@ -24,8 +24,8 @@ const Slideshow = ({ setSlideshowState, setQuizTotal }) => {
         setTotal(newTotal);
         setQuizTotal(newTotal);
     };
-    current === 12 && els[els.length - 1].value && setSlideshowState();
-    // setSlideshowComplete();
+    // current === 12 && els[els.length - 1].value && setSlideshowState();
+    setSlideshowState();
     return (
         <section className="slideshow">
             <div className="percent-complete">
