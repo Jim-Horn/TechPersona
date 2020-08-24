@@ -3,6 +3,7 @@ import debounce from 'lodash/debounce';
 import Intro from '../Intro';
 import Slideshow from '../SlideShow';
 import './wrapper.scss';
+import Results from '../Results';
 
 class Wrapper extends React.Component {
     state = {
@@ -31,8 +32,8 @@ class Wrapper extends React.Component {
         this.setState({ introComplete: true });
     };
 
-    setSlideshowComplete = () => {
-        this.setState({ slideshowComplete: true });
+    setSlideshowState = (isComplete = true) => {
+        this.setState({ slideshowComplete: isComplete });
     };
 
     setQuizTotal = (val) => {
@@ -48,22 +49,11 @@ class Wrapper extends React.Component {
                 {introComplete && !slideshowComplete && (
                     <Slideshow
                         containerWidth={containerWidth}
-                        setSlideshowComplete={this.setSlideshowComplete}
+                        setSlideshowState={this.setSlideshowState}
                         setQuizTotal={this.setQuizTotal}
                     />
                 )}
-                {introComplete && slideshowComplete && (
-                    <span>
-                        <h1>Complete!</h1>
-                        <h2>{this.state.quizTotal}</h2>
-                        <button
-                            onClick={() => {
-                                this.setState({ slideshowComplete: false });
-                            }}>
-                            Back
-                        </button>
-                    </span>
-                )}
+                {introComplete && slideshowComplete && <Results setSlideshowState={this.setSlideshowState} />}
             </section>
         );
     }

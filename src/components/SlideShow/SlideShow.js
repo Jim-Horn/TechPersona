@@ -7,13 +7,12 @@ import './response.scss';
 import './question.scss';
 import Bubble from '../Bubble';
 import { CONSTANTS } from '../../constants';
-import { mathFns } from '../../utils';
 const autoShowNextSlide = true;
 const nextSlideTime = 50;
 const debug = false;
 const supportsWebM = checkWebmSupport();
 
-const Slideshow = ({ setSlideshowComplete, setQuizTotal }) => {
+const Slideshow = ({ setSlideshowState, setQuizTotal }) => {
     const [current, setCurrent] = useState(0);
     const [els, setEls] = useState(statements);
     const [total, setTotal] = useState(0);
@@ -25,7 +24,8 @@ const Slideshow = ({ setSlideshowComplete, setQuizTotal }) => {
         setTotal(newTotal);
         setQuizTotal(newTotal);
     };
-    current === 12 && els[els.length - 1].value && setSlideshowComplete();
+    current === 12 && els[els.length - 1].value && setSlideshowState();
+    // setSlideshowComplete();
     return (
         <section className="slideshow">
             <div className="percent-complete">
