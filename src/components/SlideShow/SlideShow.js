@@ -9,7 +9,7 @@ import Bubble from '../Bubble';
 import { CONSTANTS } from '../../constants';
 const autoShowNextSlide = true;
 const nextSlideTime = 50;
-const debug = false;
+const debug = true;
 const supportsWebM = checkWebmSupport();
 
 const Slideshow = ({ setSlideshowState, setQuizTotal }) => {
@@ -40,7 +40,7 @@ const Slideshow = ({ setSlideshowState, setQuizTotal }) => {
                 setValue={setValue}
                 total={total}
             />
-            {debug && <pre className="state">{JSON.stringify(els, null, 2)}</pre>}
+            {debug && <pre className="state">{JSON.stringify(els[current], null, 2)}</pre>}
         </section>
     );
 };
