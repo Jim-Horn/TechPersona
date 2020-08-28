@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { checkWebmSupport } from '../../utils/utils';
-import statements from './statements';
 import data from './response-data';
 import './slideshow.scss';
 import './response.scss';
@@ -12,9 +11,8 @@ const nextSlideTime = 50;
 const debug = true;
 const supportsWebM = checkWebmSupport();
 
-const Slideshow = ({ setSlideshowState, setQuizTotal }) => {
+const Slideshow = ({ setSlideshowState, setQuizTotal, els, setEls }) => {
     const [current, setCurrent] = useState(0);
-    const [els, setEls] = useState(statements);
     const [total, setTotal] = useState(0);
     const setValue = (val) => {
         const currentState = els;
@@ -34,7 +32,7 @@ const Slideshow = ({ setSlideshowState, setQuizTotal }) => {
             </div>
             <Slide
                 el={els[current]}
-                max={statements.length - 1}
+                max={els.length - 1}
                 current={current}
                 setCurrent={setCurrent}
                 setValue={setValue}

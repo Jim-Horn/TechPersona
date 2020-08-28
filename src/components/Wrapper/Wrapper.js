@@ -4,9 +4,11 @@ import Intro from '../Intro';
 import Slideshow from '../SlideShow';
 import './wrapper.scss';
 import Results from '../Results';
+import statements from '../SlideShow/statements';
 
 class Wrapper extends React.Component {
     state = {
+        els: statements,
         introComplete: false,
         slideshowComplete: false,
         containerWidth: null,
@@ -40,6 +42,10 @@ class Wrapper extends React.Component {
         this.setState({ quizTotal: val });
     };
 
+    setEls(els) {
+        this.setState({ els });
+    }
+
     render() {
         const { introComplete, slideshowComplete, containerWidth } = this.state;
 
@@ -51,9 +57,11 @@ class Wrapper extends React.Component {
                         containerWidth={containerWidth}
                         setSlideshowState={this.setSlideshowState}
                         setQuizTotal={this.setQuizTotal}
+                        els={this.state.els}
+                        setEls={this.setEls.bind(this)}
                     />
                 )}
-                {introComplete && slideshowComplete && <Results setSlideshowState={this.setSlideshowState} />}
+                {introComplete && slideshowComplete && <Results setSlideshowState={this.setSlideshowState} els={this.state.els} />}
             </section>
         );
     }
