@@ -23,5 +23,5 @@ export const mathFns = {
 
         return Math.sqrt(avgSquareDiff);
     },
-    getNumbers: (arr) => arr.map((el) => el.value).filter(Boolean),
+    getNumbers: (arr) => arr.map((el) => el.value).filter(Number.isInteger),
 };
