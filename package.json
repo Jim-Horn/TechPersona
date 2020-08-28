@@ -12,19 +12,24 @@
         "start": "parcel index.html",
         "clean": "rimraf dist",
         "build": "yarn clean && parcel build --no-source-maps index.html",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest",
+        "test:watch": "jest --watch --verbose",
+        "test:coverage": "jest --coverage"
     },
     "keywords": [],
     "author": "Jim Horn <jim@jdhorn.com> (https://www.jdhorn.com)",
     "license": "ISC",
     "dependencies": {
-        "lodash": "^4.17.20",
-        "parcel-bundler": "^1.12.4",
         "react": "^16.13.1",
         "react-dom": "16.13.1"
     },
     "devDependencies": {
+        "@babel/core": "^7.11.4",
+        "babel-jest": "^26.3.0",
         "husky": "4.2.5",
+        "jest": "^26.4.2",
+        "lodash": "^4.17.20",
+        "parcel-bundler": "^1.12.4",
         "prettier": "^2.1.1",
         "pretty-quick": "3.0.0",
         "rimraf": "^3.0.2",
