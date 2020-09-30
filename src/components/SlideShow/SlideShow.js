@@ -9,7 +9,7 @@ import { CONSTANTS } from '../../constants';
 const autoShowNextSlide = true;
 const nextSlideTime = 50;
 const debug = false;
-const bubbles = false;
+const bubbles = true;
 const supportsWebM = checkWebmSupport();
 
 const Slideshow = ({ setSlideshowState, setQuizTotal, els, setEls }) => {
