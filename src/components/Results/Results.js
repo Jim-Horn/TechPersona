@@ -6,17 +6,22 @@ const Results = ({ setSlideshowState, els }) => {
     console.log(calcs(els.map((el) => ({ value: el.value, weights: el.weights }))));
     return (
         <div id="results">
-            <h1>Complete!</h1>
-            <h2>More complete</h2>
+            <h1>Tech Persona Quiz Complete!</h1>
+            <h2>Results page</h2>
+            <BackButton setSlideshowState={setSlideshowState} />
             <pre>{JSON.stringify(els, null, 4)}</pre>
-            <button
-                onClick={() => {
-                    setSlideshowState(false);
-                }}>
-                Back
-            </button>
+            <BackButton setSlideshowState={setSlideshowState} />
         </div>
     );
 };
 
 export default Results;
+
+const BackButton = ({setSlideshowState}) => (
+    <button
+        onClick={() => {
+            setSlideshowState(false);
+        }}>
+        Back
+    </button>
+);
