@@ -34,7 +34,7 @@ export default [
         color: CONSTANTS.STYLES.BLUE,
         type: CONSTANTS.TYPES.FACT,
         blurb: `Nearly half the world's population has never made a phone call.`,
-        answerValues: [-3.31, -2.39, -0.08, 1.45, 2.24, 5.91, 6.55],
+        // answerValues: [-3.31, -2.39, -0.08, 1.45, 2.24, 5.91, 6.55],
         weights: { enthusiast: 0, skeptic: 0, passenger: 0, nearly: 0, diyer: 0 },
     },
     {
@@ -44,7 +44,7 @@ export default [
         color: CONSTANTS.STYLES.PURPLE,
         type: CONSTANTS.TYPES.DID_YOU_KNOW,
         blurb: `It took Thomas Edison thousands of failed attempts to develop the light bulb.`,
-        answerValues: [-2.9, -2.76, -2.51, -0.39, 1.72, 7.07, 7.54],
+        // answerValues: [-2.9, -2.76, -2.51, -0.39, 1.72, 7.07, 7.54],
         weights: { enthusiast: 1.73, skeptic: -1.799, passenger: -1.72, nearly: 0.341, diyer: 0.692 },
     },
     {
@@ -54,7 +54,7 @@ export default [
         color: CONSTANTS.STYLES.GREEN,
         type: CONSTANTS.TYPES.FACT,
         blurb: `In the past, the term "troubleshooter" has taken the form of "trouble hunter" and "troublemen." Both were used to describe those who diagnosed or fixed telephone lines in the early 20th century.`,
-        answerValues: [-6.14, -4.51, -3.05, -2.45, 3.3, 3.67, 4.42],
+        // answerValues: [-6.14, -4.51, -3.05, -2.45, 3.3, 3.67, 4.42],
         weights: { enthusiast: -0.039, skeptic: -1.116, passenger: -0.75, nearly: 0.242, diyer: -0.913 },
     },
     {
@@ -64,7 +64,7 @@ export default [
         color: CONSTANTS.STYLES.BLUE,
         type: CONSTANTS.TYPES.DID_YOU_KNOW,
         blurb: `In 1983, the first mobile phones went on sale in the US for nearly $4000.`,
-        answerValues: [-5.0, -4.51, -4.48, -3.71, -1.13, 2.49, 3.4],
+        // answerValues: [-5.0, -4.51, -4.48, -3.71, -1.13, 2.49, 3.4],
         weights: { enthusiast: -0.8, skeptic: -1.563, passenger: -2.098, nearly: 0.326, diyer: -1.392 },
     },
     {
@@ -74,7 +74,7 @@ export default [
         color: CONSTANTS.STYLES.PURPLE,
         type: CONSTANTS.TYPES.FACT,
         blurb: `In 2015, Apple briefly considered adding a joystick inside the iPhone's home button.`,
-        answerValues: [-4.76, -2.58, -1.44, -1.18, 2.48, 2.59, 5.46],
+        // answerValues: [-4.76, -2.58, -1.44, -1.18, 2.48, 2.59, 5.46],
         weights: { enthusiast: 0.352, skeptic: 0.139, passenger: -0.355, nearly: 0.167, diyer: 0.251 },
     },
     {
@@ -84,7 +84,7 @@ export default [
         color: CONSTANTS.STYLES.GREEN,
         type: CONSTANTS.TYPES.DID_YOU_KNOW,
         blurb: `Some people are afraid of new technology—it's called technophobia.`,
-        answerValues: [-3.96, -3.3, -0.72, -0.08, 4.0, 6.09, 7.35],
+        // answerValues: [-3.96, -3.3, -0.72, -0.08, 4.0, 6.09, 7.35],
         weights: { enthusiast: 2.802, skeptic: -1.129, passenger: 0.351, nearly: 0.294, diyer: 1.631 },
     },
     {
@@ -94,7 +94,7 @@ export default [
         color: CONSTANTS.STYLES.BLUE,
         type: CONSTANTS.TYPES.FACT,
         blurb: `The very first iPhone was released to the public in June 2007.`,
-        answerValues: [-6.73, -2.72, -1.41, 1.7, 2.66, 5.69, 6.64],
+        // answerValues: [-6.73, -2.72, -1.41, 1.7, 2.66, 5.69, 6.64],
         weights: { enthusiast: -1.381, skeptic: -3.641, passenger: -3.565, nearly: 0.556, diyer: -2.495 },
     },
     {
@@ -104,7 +104,7 @@ export default [
         color: CONSTANTS.STYLES.PURPLE,
         type: CONSTANTS.TYPES.DID_YOU_KNOW,
         blurb: `Many early 20th century household radios were home made, thanks to a handy set of instructions published by the U.S. government in 1922.`,
-        answerValues: [-6.36, -5.5, -1.73, -1.7, -1.57, 0.93, 7.27],
+        // answerValues: [-6.36, -5.5, -1.73, -1.7, -1.57, 0.93, 7.27],
         weights: { enthusiast: 0.616, skeptic: -0.2038, passenger: -3.05, nearly: 0.358, diyer: 0.185 },
     },
     {
@@ -114,7 +114,7 @@ export default [
         color: CONSTANTS.STYLES.GREEN,
         type: CONSTANTS.TYPES.FACT,
         blurb: `More than 400,000 NASA staff worked on the Apollo moon landing mission.`,
-        answerValues: [-6.24, -6.02, -1.2, 0.58, 3.98, 4.35, 7.74],
+        // answerValues: [-6.24, -6.02, -1.2, 0.58, 3.98, 4.35, 7.74],
         weights: { enthusiast: -0.517, skeptic: -1.926, passenger: -1.519, nearly: 0.329, diyer: -1.459 },
     },
     {
@@ -124,7 +124,7 @@ export default [
         color: CONSTANTS.STYLES.BLUE,
         type: CONSTANTS.TYPES.DID_YOU_KNOW,
         blurb: `The digital pocket watch was invented in 1883.`,
-        answerValues: [-6.56, -4.95, -4.51, -2.52, -1.13, 4.67, 5.51],
+        // answerValues: [-6.56, -4.95, -4.51, -2.52, -1.13, 4.67, 5.51],
         weights: { enthusiast: 0.347, skeptic: -0.252, passenger: -0.838, nearly: 0.375, diyer: 0.256 },
     },
     {
@@ -134,7 +134,7 @@ export default [
         color: CONSTANTS.STYLES.PURPLE,
         type: CONSTANTS.TYPES.FACT,
         blurb: `In 1989 hackers pulled off the first-ever large scale ransomware attack by mailing out 20,000 floppy disks that contained a trojan virus.`,
-        answerValues: [-6.56, -4.84, -4.46, -2.89, 0.24, 1.39, 5.73],
+        // answerValues: [-6.56, -4.84, -4.46, -2.89, 0.24, 1.39, 5.73],
         weights: { enthusiast: -0.12, skeptic: -0.295, passenger: -0.93, nearly: -0.06, diyer: -0.007 },
     },
     {
@@ -144,7 +144,7 @@ export default [
         color: CONSTANTS.STYLES.GREEN,
         type: CONSTANTS.TYPES.DID_YOU_KNOW,
         blurb: `Google started in 1996 as a research project by students at Stanford University.`,
-        answerValues: [-5.39, -4.54, -1.21, -1.15, -0.6, 1.47, 6.49],
+        // answerValues: [-5.39, -4.54, -1.21, -1.15, -0.6, 1.47, 6.49],
         weights: { enthusiast: 0.428, skeptic: -3.293, passenger: -2.277, nearly: 0.168, diyer: -2.224 },
     },
     {
@@ -154,7 +154,7 @@ export default [
         color: CONSTANTS.STYLES.BLUE,
         type: CONSTANTS.TYPES.FACT,
         blurb: `The magnetic stripe used in credit cards was invented in 1960 by an IBM engineer.`,
-        answerValues: [-3.67, 1.29, 2.24, 2.85, 4.12, 4.65, 7.94],
+        // answerValues: [-3.67, 1.29, 2.24, 2.85, 4.12, 4.65, 7.94],
         weights: { enthusiast: 2.417, skeptic: -1.049, passenger: 0.179, nearly: 0.333, diyer: 1.472 },
     },
 ];
