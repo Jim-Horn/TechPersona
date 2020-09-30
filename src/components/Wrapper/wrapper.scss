@@ -12,4 +12,28 @@ body {
 
 .slideshow-wrapper {
     background-color: #f0f0f5;
+    button {
+        font-size: 1.25rem;
+        outline: 0;
+        border: 1px solid #892ccd;
+        height: 3rem;
+        border-radius: 1.5rem;
+        padding: 0 1.5rem;
+        color: #892ccd;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        background: transparent;
+        &:hover {
+            color: white;
+            background: #892ccd;
+        }
+        &:disabled,
+        &:disabled:hover {
+            background: transparent;
+            color: grey;
+            border-color: grey;
+            cursor: default;
+        }
+    }
 }
