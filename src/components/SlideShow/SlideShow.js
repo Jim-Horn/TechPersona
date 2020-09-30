@@ -8,7 +8,8 @@ import Bubble from '../Bubble';
 import { CONSTANTS } from '../../constants';
 const autoShowNextSlide = true;
 const nextSlideTime = 50;
-const debug = true;
+const debug = false;
+const bubbles = false;
 const supportsWebM = checkWebmSupport();
 
 const Slideshow = ({ setSlideshowState, setQuizTotal, els, setEls }) => {
@@ -78,14 +79,16 @@ const Slide = ({ el, current, max, setCurrent, setValue, total }) => {
                     })}
                 </div>
             </section>
-            <div className="speech-container">
-                <Bubble size="" color={color} fill="" align="right">
-                    {type === CONSTANTS.TYPES.FACT ? 'FACT ...' : 'DID YOU KNOW ...'}
-                </Bubble>
-                <Bubble size="large" color={color} fill="solid" align="left">
-                    {blurb}
-                </Bubble>
-            </div>
+            {bubbles && (
+                <div className="speech-container">
+                    <Bubble size="" color={color} fill="" align="right">
+                        {type === CONSTANTS.TYPES.FACT ? 'FACT ...' : 'DID YOU KNOW ...'}
+                    </Bubble>
+                    <Bubble size="large" color={color} fill="solid" align="left">
+                        {blurb}
+                    </Bubble>
+                </div>
+            )}
             <nav>
                 <button
                     disabled={current === 0}
