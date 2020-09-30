@@ -8,11 +8,12 @@ export const CONSTANTS = {
         PURPLE: 'purple',
         GREEN: 'green',
     },
-    personas: {
-        enthusiast: -6.558,
-        skeptic: -6.178,
-        passenger: -6.193,
-        nearly: -1.703,
-        diyer: -6.985,
-    },
+};
+
+export const personas = {
+    enthusiast: { friendlyName: 'Enthusiast', determiner: 'an' },
+    skeptic: { friendlyName: 'Skeptic', determiner: 'a' },
+    passenger: { friendlyName: 'Passenger', determiner: 'a' },
+    nearly: { friendlyName: 'Nearly', determiner: 'a' },
+    diyer: { friendlyName: 'Diyer', determiner: 'a' },
 };
