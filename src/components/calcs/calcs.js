@@ -14,6 +14,12 @@ export default function (arr) {
         return { error: `expected an Array with 13 digits, received ${ints.length}: ${ints}` };
     }
 
+    const mean = mathFns.avg(ints);
+    console.log('mean: ', mean);
+
+    const stdDev = mathFns.stdDev(ints);
+    console.log('stdDev: ', stdDev);
+
     function calcValues(arr) {
         const personaValues = arr.map(addValues);
         const results = {};
@@ -23,8 +29,16 @@ export default function (arr) {
         );
         return { personaValues, results };
 
+        function getCenteredScore(val) {
+            return (val - mean) / stdDev;
+        }
+
         function addValues(item) {
-            Object.keys(item.weights).forEach((el) => (item[el] = item.value * item.weights[el]));
+            item.centeredScore = getCenteredScore(item.value);
+            console.log('item: ', item);
+            Object.keys(item.weights).forEach(
+                (el) => (item.calculatedValues[el] = item.centeredScore * item.weights[el])
+            );
 
             return item;
         }
@@ -37,8 +51,8 @@ export default function (arr) {
     const calcs = calcValues(arr);
 
     return {
-        mean: mathFns.avg(ints),
-        stdDev: mathFns.stdDev(ints),
+        mean,
+        stdDev,
         initialValues: ints,
         personaValues: calcs.personaValues,
         results: calcs.results,
