@@ -4,9 +4,10 @@ import calcs from '../calcs';
 import './results.scss';
 
 const Results = ({ setSlideshowState, els }) => {
-    const persona = calcs(els.map((el) => ({ value: el.value, weights: el.weights }))).persona;
+    const results = calcs(els.map((el) => ({ value: el.value, weights: el.weights })));
+    window.results = results;
 
-    const { determiner, friendlyName } = personas[persona];
+    const { determiner, friendlyName } = personas[results.persona];
 
     return (
         <div id="results">
