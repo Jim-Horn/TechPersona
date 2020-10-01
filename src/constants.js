@@ -11,9 +11,9 @@ export const CONSTANTS = {
 };
 
 export const personas = {
-    enthusiast: { friendlyName: 'Enthusiast', determiner: 'an' },
-    skeptic: { friendlyName: 'Skeptic', determiner: 'a' },
-    passenger: { friendlyName: 'Passenger', determiner: 'a' },
-    nearly: { friendlyName: 'Nearly', determiner: 'a' },
-    diyer: { friendlyName: 'Diyer', determiner: 'a' },
+    enthusiast: { friendlyName: 'Enthusiast', determiner: 'an', constant: -10.39294049 },
+    skeptic: { friendlyName: 'Skeptic', determiner: 'a', constant: -8.395134809 },
+    passenger: { friendlyName: 'Passenger', determiner: 'a', constant: -12.6347289 },
+    nearly: { friendlyName: 'Nearly', determiner: 'a', constant: -0.654191647 },
+    diyer: { friendlyName: 'DIYer', determiner: 'a', constant: -10.25148354 },
 };
