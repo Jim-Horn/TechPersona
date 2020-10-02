@@ -18,13 +18,15 @@ const Results = ({ setSlideshowState, els }) => {
         <div id="results">
             <h1>Tech Persona Quiz Complete!</h1>
             <h2>Results page</h2>
-            <BackButton setSlideshowState={setSlideshowState} />
-            <pre>
-                {/*JSON.stringify(calcs(els.map((el) => ({ value: el.value, weights: el.weights }))).persona, null, 4)*/}
-            </pre>
-            <pre>
+            <h3>
                 It looks like you're {determiner} {friendlyName}
-            </pre>
+            </h3>
+            <p>
+                Auto-redirect to WordPress page for {friendlyName}, which will also have links and info for other
+                persona types
+            </p>
+            <BackButton setSlideshowState={setSlideshowState} />
+            <pre>{debug && JSON.stringify(results, null, 4)}</pre>
             <BackButton setSlideshowState={setSlideshowState} />
         </div>
     );
