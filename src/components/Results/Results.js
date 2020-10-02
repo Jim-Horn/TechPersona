@@ -10,8 +10,25 @@ const Results = ({ setSlideshowState, els }) => {
         els.map((el) => ({ value: el.value, weights: el.weights, calculatedValues: el.calculatedValues }))
     );
     window.results = results;
-    debug && console.table(results.personaValues.reduce((acc, obj) => acc.concat(obj.calculatedValues), []));
+    window.els = els;
+    function printResults() {
+        console.group('results personaValues');
+        console.table(results.personaValues.reduce((acc, obj) => acc.concat(obj.calculatedValues), []));
+        console.groupEnd();
 
+        console.group('results.results');
+        console.table(results.results);
+        console.groupEnd();
+
+        console.group('personas');
+        console.table(personas);
+        console.groupEnd();
+
+        console.group('els');
+        console.table(els);
+        console.groupEnd();
+    }
+    debug && printResults();
     const { determiner, friendlyName } = personas[results.persona];
 
     return (
