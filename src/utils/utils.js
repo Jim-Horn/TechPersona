@@ -21,7 +21,7 @@ export const mathFns = {
 
         const avgSquareDiff = mathFns.avg(squareDiffs);
 
-        return Math.sqrt(avgSquareDiff);
+        return Math.sqrt(avgSquareDiff) || 1;
     },
     getNumbers: (arr) => arr.map((el) => el.value).filter(Number.isInteger),
 };
