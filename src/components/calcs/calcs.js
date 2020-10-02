@@ -17,8 +17,8 @@ export default function (arr) {
     const mean = mathFns.avg(ints);
     console.log('mean: ', mean);
 
-    const stdDev = mathFns.stdDev(ints);
-    console.log('stdDev: ', stdDev);
+    const stDev = mathFns.stDev(ints);
+    console.log('stDev: ', stDev);
 
     function calcValues(arr) {
         const personaValues = arr.map(addValues);
@@ -32,7 +32,7 @@ export default function (arr) {
         return { personaValues, results };
 
         function getCenteredScore(val) {
-            return (val - mean) / stdDev;
+            return (val - mean) / stDev;
         }
 
         function addValues(item) {
@@ -54,7 +54,7 @@ export default function (arr) {
 
     return {
         mean,
-        stdDev,
+        stDev,
         initialValues: ints,
         personaValues: calcs.personaValues,
         results: calcs.results,

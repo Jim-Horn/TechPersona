@@ -35,7 +35,7 @@ describe(`mathFns.avg functionality`, () => {
     }
 });
 
-describe(`mathFns.stdDev functionality`, () => {
+describe(`mathFns.stDev functionality`, () => {
     [
         {
             arg: [1, 2, 3],
@@ -65,7 +65,7 @@ describe(`mathFns.stdDev functionality`, () => {
 
     function runTest({ arg, result }) {
         test(`standard deviation of ${JSON.stringify(arg)} should equal ${result}`, () => {
-            expect(mathFns.stdDev(arg)).toEqual(result);
+            expect(mathFns.stDev(arg)).toEqual(result);
         });
     }
 });

@@ -11,7 +11,7 @@ export const mathFns = {
 
         return sum / arr.length;
     },
-    stdDev: (values) => {
+    stDev: (values) => {
         const avg = mathFns.avg(values);
 
         const squareDiffs = values.map((value) => {
