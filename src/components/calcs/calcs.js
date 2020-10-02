@@ -2,33 +2,39 @@ import { mathFns } from '../../utils';
 import { personas } from '../../constants';
 
 export default function (arr) {
-    console.log('arr: ', arr);
     if (arr.length !== 13) {
         return { error: `expected an Array with 13 elements, received ${arr.length}` };
     }
 
-    const ints = mathFns.getNumbers(arr);
-    console.log('ints: ', ints);
+    const userEnteredValues = mathFns.getNumbers(arr);
 
-    if (ints < 13) {
-        return { error: `expected an Array with 13 digits, received ${ints.length}: ${ints}` };
+    if (userEnteredValues < 13) {
+        return {
+            error: `expected an Array with 13 digits, received ${userEnteredValues.length}: ${userEnteredValues}`,
+        };
     }
 
-    const mean = mathFns.avg(ints);
-    console.log('mean: ', mean);
+    const mean = mathFns.avg(userEnteredValues);
 
-    const stDev = mathFns.stDev(ints);
-    console.log('stDev: ', stDev);
+    const stDev = mathFns.stDev(userEnteredValues);
 
     function calcValues(arr) {
         const personaValues = arr.map(addValues);
         const results = {};
 
-        Object.keys(personas).forEach((persona) =>
-            (results[persona] = personaValues.reduce(
-                (acc, el) => el.calculatedValues[persona],
-                personas[persona].Constant
-            )));
+        Object.keys(personas).forEach(
+            (persona) =>
+                (results[persona] = personaValues.reduce((acc, el, id) => {
+                    console.log(
+                        'id, acc, persona, el.calculatedValues[persona]: ',
+                        id,
+                        acc,
+                        persona,
+                        el.calculatedValues[persona]
+                    );
+                    return acc + el.calculatedValues[persona];
+                }, personas[persona].Constant))
+        );
         return { personaValues, results };
 
         function getCenteredScore(val) {
@@ -40,24 +46,23 @@ export default function (arr) {
             Object.keys(item.weights).forEach(
                 (el) => (item.calculatedValues[el] = item.centeredScore * item.weights[el])
             );
-            console.log('item: ', item);
 
             return item;
         }
     }
 
-    function getMax(obj) {
+    function getKeyNameOfMaxObjValue(obj) {
         return Object.keys(obj).reduce((a, b) => (obj[a] > obj[b] ? a : b));
     }
 
-    const calcs = calcValues(arr);
+    const calculatedValues = calcValues(arr);
 
     return {
         mean,
         stDev,
-        initialValues: ints,
-        personaValues: calcs.personaValues,
-        results: calcs.results,
-        persona: getMax(calcs.results),
+        initialValues: userEnteredValues,
+        personaValues: calculatedValues.personaValues,
+        results: calculatedValues.results,
+        persona: getKeyNameOfMaxObjValue(calculatedValues.results),
     };
 }
