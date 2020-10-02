@@ -1,0 +1,30 @@
+.question {
+    //outline: 5px dotted transparent;
+    transition: all 0.25s;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    .quiz-vid,
+    .quiz-img {
+        max-width: 400px;
+        min-width: 320px;
+    }
+    img {
+        width: 300px;
+        height: 300px;
+    }
+    h2 {
+        //font-size: 1.5rem;
+        min-height: 70px;
+        max-width: 800px;
+    }
+    &.todo {
+        //outline-color: mediumvioletred;
+    }
+    &.complete {
+        //outline-color: forestgreen;
+    }
+    margin-bottom: 7.5rem;
+}
