@@ -3,11 +3,14 @@ import { personas } from '../../constants';
 import calcs from '../calcs';
 import './results.scss';
 
+const debug = true;
+
 const Results = ({ setSlideshowState, els }) => {
     const results = calcs(
         els.map((el) => ({ value: el.value, weights: el.weights, calculatedValues: el.calculatedValues }))
     );
     window.results = results;
+    debug && console.table(results.personaValues.reduce((acc, obj) => acc.concat(obj.calculatedValues), []));
 
     const { determiner, friendlyName } = personas[results.persona];
 
