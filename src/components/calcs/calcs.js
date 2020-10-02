@@ -37,10 +37,10 @@ export default function (arr) {
 
         function addValues(item) {
             item.centeredScore = getCenteredScore(item.value);
-            console.log('item: ', item);
             Object.keys(item.weights).forEach(
                 (el) => (item.calculatedValues[el] = item.centeredScore * item.weights[el])
             );
+            console.log('item: ', item);
 
             return item;
         }
