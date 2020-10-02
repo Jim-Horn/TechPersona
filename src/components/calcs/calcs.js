@@ -24,9 +24,11 @@ export default function (arr) {
         const personaValues = arr.map(addValues);
         const results = {};
 
-        Object.keys(personas).forEach(
-            (persona) => (results[persona] = personaValues.reduce((acc, el) => el[persona], 0))
-        );
+        Object.keys(personas).forEach((persona) =>
+            (results[persona] = personaValues.reduce(
+                (acc, el) => el.calculatedValues[persona],
+                personas[persona].Constant
+            )));
         return { personaValues, results };
 
         function getCenteredScore(val) {
