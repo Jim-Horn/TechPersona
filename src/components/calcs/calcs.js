@@ -24,16 +24,10 @@ export default function (arr) {
 
         Object.keys(personas).forEach(
             (persona) =>
-                (results[persona] = personaValues.reduce((acc, el, id) => {
-                    console.log(
-                        'id, acc, persona, el.calculatedValues[persona]: ',
-                        id,
-                        acc,
-                        persona,
-                        el.calculatedValues[persona]
-                    );
-                    return acc + el.calculatedValues[persona];
-                }, personas[persona].Constant))
+                (results[persona] = personaValues.reduce(
+                    (acc, el) => acc + el.calculatedValues[persona],
+                    personas[persona].Constant
+                ))
         );
         return { personaValues, results };
 
