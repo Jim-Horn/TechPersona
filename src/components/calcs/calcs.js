@@ -8,7 +8,7 @@ export default function (arr) {
 
     const userEnteredValues = mathFns.getNumbers(arr);
 
-    if (userEnteredValues < 13) {
+    if (userEnteredValues.length < 13) {
         return {
             error: `expected an Array with 13 digits, received ${userEnteredValues.length}: ${userEnteredValues}`,
         };
