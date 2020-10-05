@@ -3,7 +3,7 @@ import { personas } from '../../constants';
 import calcs from '../calcs';
 import './results.scss';
 
-const debug = !true;
+const debug = true;
 
 const Results = ({ setSlideshowState, els }) => {
     const results = calcs(
