@@ -7,7 +7,7 @@ import './question.scss';
 import Bubble from '../Bubble';
 import { CONSTANTS } from '../../constants';
 const autoShowNextSlide = true;
-const nextSlideTime = 50;
+const nextSlideTime = 250;
 const debug = false;
 const bubbles = true;
 const supportsWebM = checkWebmSupport();

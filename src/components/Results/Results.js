@@ -44,7 +44,7 @@ const Results = ({ setSlideshowState, els }) => {
             </p>
             <BackButton setSlideshowState={setSlideshowState} />
             <pre>{debug && JSON.stringify(results, null, 4)}</pre>
-            <BackButton setSlideshowState={setSlideshowState} />
+            {debug && <BackButton setSlideshowState={setSlideshowState}/>}
         </div>
     );
 };
