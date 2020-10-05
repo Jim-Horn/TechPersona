@@ -3,7 +3,7 @@ import { personas } from '../../constants';
 import calcs from '../calcs';
 import './results.scss';
 
-const debug = true;
+const debug = !true;
 
 const Results = ({ setSlideshowState, els }) => {
     const results = calcs(
@@ -44,7 +44,7 @@ const Results = ({ setSlideshowState, els }) => {
             </p>
             <BackButton setSlideshowState={setSlideshowState} />
             <pre>{debug && JSON.stringify(results, null, 4)}</pre>
-            <BackButton setSlideshowState={setSlideshowState} />
+            {debug && <BackButton setSlideshowState={setSlideshowState}/>}
         </div>
     );
 };
